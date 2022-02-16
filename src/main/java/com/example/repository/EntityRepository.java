@@ -1,23 +1,21 @@
 package com.example.repository;
 
 import com.example.model.Person;
+import com.example.model.PersonId;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
-public class EntityRepository {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+public interface EntityRepository extends JpaRepository<Person, PersonId> {
 
-    public List<Person> getPersonsByCity(String city) {
-        return entityManager.createQuery(
-                        "select p from Person p where p.cityOfLiving = :city", Person.class)
-                .setParameter("city", city)
-                .getResultList();
-    }
+    List<Person> findByCityOfLiving(String city);
+
+    @SuppressWarnings("SpringDataMethodInconsistencyInspection")
+    Optional<Person> findPersonByPersonId_NameAndAndPersonId_Surname(String name, String surname);
+
+    List<Person> findAllByPersonId_AgeLessThanOrderByPersonId_Age(int age);
+
 }
