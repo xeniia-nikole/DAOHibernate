@@ -3,7 +3,6 @@ package com.example.repository;
 import com.example.model.Person;
 import com.example.model.PersonId;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;

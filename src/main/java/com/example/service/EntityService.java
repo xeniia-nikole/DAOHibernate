@@ -11,7 +11,6 @@ import java.util.Optional;
 public class EntityService {
     private final EntityRepository repository;
 
-
     public EntityService(EntityRepository repository) {
         this.repository = repository;
     }
